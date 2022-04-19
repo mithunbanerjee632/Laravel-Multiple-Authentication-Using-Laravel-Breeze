@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\AdminController;
+use App\Http\Controllers\Dashboard\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/admin/login',[AdminController::class,'AdminLogin']);
+Route::get('/admin/dashboard',[DashboardController::class,'AdminDashbord']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
