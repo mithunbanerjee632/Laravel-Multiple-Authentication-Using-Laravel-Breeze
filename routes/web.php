@@ -20,8 +20,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin/login',[AdminController::class,'AdminLogin']);
-Route::get('/admin/dashboard',[DashboardController::class,'AdminDashbord']);
+//backend login
+Route::get('/admin/loginForm',[AdminController::class,'AdminLoginForm']);
+Route::post('/admin/login',[AdminController::class,'AdminLogin']);
+
+/*Route::get('/admin/dashboard',[DashboardController::class,'AdminDashbord'])->middleware('admin');*/
+
+Route::group(['middleware'=>'admin'],function(){
+     Route::get('/admin/dashboard',[DashboardController::class,'AdminDashbord']);
+     Route::get('/admin/logout',[AdminController::class,'AdminLogout']);
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

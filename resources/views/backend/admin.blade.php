@@ -10,22 +10,43 @@
 
     <title>Admin Login!</title>
   </head>
-  <body>
-   <div class="container">
-      <h2 class="text-center">Admin Login</h2>
-    <form action="" method="" style="width:500px; margin-left: 400px;">
-        @csrf
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label ">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+
+
+     <body>
+       <div class="container">
+         <div class="row">
+           <div class="col-md-3"></div>
+           <div class="col-md-6">
+              <h2 class="text-center mt-5">Admin Login</h2>
+
+              @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if(Session::has('error-msg'))
+                <p class="text-danger">{{Session::get('error-msg')}}</p>
+            @endif
+                <form action="{{url('/admin/login')}}" method="post" >
+                    @csrf
+                    <div class="mb-3">
+                      <label  class="form-label ">Email address</label>
+                      <input type="email" name="email" class="form-control" >
+                      
+                    </div>
+                    <div class="mb-3">
+                      <label  class="form-label">Password</label>
+                      <input type="password" name="password" class="form-control" >
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+           </div>
+         </div>
    </div>
 
   

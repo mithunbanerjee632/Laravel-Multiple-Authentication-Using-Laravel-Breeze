@@ -11,9 +11,15 @@
     <title>Admin Login!</title>
   </head>
   <body>
-      <h1 class="text-center">Welcome to Admin Dashboard</h1>
-      <div class="text-center mt-2">
-        <button class="btn btn-danger">Logout</div>
+      <div class="container">
+        <div class="card mt-2">
+          <div class="card-body">
+            <h4 class="text-center mt-2">Welcome to Admin Dashboard</h4>
+            <div class="text-center mt-2">
+              <a href="{{url('/admin/logout')}}" class="btn btn-danger mt-2">Logout</a>
+            </div>
+          </div>
+        </div>
       </div>
 
   
